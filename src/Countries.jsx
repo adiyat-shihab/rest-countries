@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Country from "./Country";
+import "./index.css";
 
 function Countries() {
   const [countryList, setcountry] = useState([]);
@@ -11,9 +12,13 @@ function Countries() {
 
   return (
     <>
-      {countryList.map((country) => (
-        <Country country={country} key={country.cca2}></Country>
-      ))}
+      <div>
+        <div className="griding justify-items-center gap-y-14 pt-32">
+          {countryList.map((country) => (
+            <Country country={country} key={country.cca2}></Country>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
