@@ -10,12 +10,28 @@ function Countries() {
       .then((country) => setcountry(country));
   }, []);
 
+  const [MarkVisit, setMarkVisit] = useState([]);
+  const handleVisit = (country) => {
+    const newVisite = [...MarkVisit, country];
+    setMarkVisit(newVisite);
+  };
+
   return (
     <>
       <div>
+        <h1>{MarkVisit.length}</h1>
+        <ul>
+          {MarkVisit.map((country) => (
+            <li>{country.name.common}</li>
+          ))}
+        </ul>
         <div className="griding justify-items-center gap-y-14 pt-32">
           {countryList.map((country) => (
-            <Country country={country} key={country.cca2}></Country>
+            <Country
+              country={country}
+              handleVisitCountry={handleVisit}
+              key={country.cca2}
+            ></Country>
           ))}
         </div>
       </div>
